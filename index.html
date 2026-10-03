@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validated Expense Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <section class="card" aria-labelledby="pageTitle">
+      <h1 id="pageTitle">Add Expense</h1>
+      <p>Enter expense details and submit only after all validation rules pass.</p>
+
+      <div id="successMessage" class="success" role="status" aria-live="polite" hidden></div>
+
+      <form id="expenseForm" novalidate>
+        <div class="field">
+          <label for="title">Expense Title <span aria-hidden="true">*</span></label>
+          <input id="title" name="title" type="text"
+                 autocomplete="off"
+                 aria-describedby="titleError">
+          <p id="titleError" class="error" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label for="amount">Amount (₹) <span aria-hidden="true">*</span></label>
+          <input id="amount" name="amount" type="number"
+                 min="1" max="1000000" step="0.01"
+                 aria-describedby="amountError">
+          <p id="amountError" class="error" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label for="category">Category <span aria-hidden="true">*</span></label>
+          <select id="category" name="category" aria-describedby="categoryError">
+            <option value="">Select category</option>
+            <option>Food</option>
+            <option>Travel</option>
+            <option>Education</option>
+            <option>Shopping</option>
+            <option>Utilities</option>
+            <option>Other</option>
+          </select>
+          <p id="categoryError" class="error" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label for="date">Expense Date <span aria-hidden="true">*</span></label>
+          <input id="date" name="date" type="date" aria-describedby="dateError">
+          <p id="dateError" class="error" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea id="description" name="description"
+                    maxlength="200"
+                    aria-describedby="descriptionError"></textarea>
+          <p id="descriptionError" class="error" aria-live="polite"></p>
+        </div>
+
+        <div class="field checkbox-field">
+          <input id="confirm" name="confirm" type="checkbox"
+                 aria-describedby="confirmError">
+          <label for="confirm">I confirm that these expense details are correct.</label>
+          <p id="confirmError" class="error" aria-live="polite"></p>
+        </div>
+
+        <div class="actions">
+          <button id="submitButton" type="submit" disabled>Save Expense</button>
+          <button id="resetButton" type="reset">Reset</button>
+        </div>
+
+        <p id="formStatus" class="sr-only" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
